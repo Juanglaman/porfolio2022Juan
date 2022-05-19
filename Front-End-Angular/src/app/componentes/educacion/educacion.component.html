@@ -1,0 +1,16 @@
+<div class="row">
+  <h2>Educación</h2>
+  <div class="col-lg-1"></div>
+
+  <div class="col-lg-11">
+
+    <ul *ngFor="let edu of eduList">
+
+      <li><h3>{{edu.nombinstituto}}</h3> - <h4>Año de egreso {{edu.anioegreso}}</h4></li>
+      <h4>{{edu.tituloEdu}}</h4>
+      <p>{{edu.descripEdu}}</p>
+    </ul>
+
+  </div>
+</div>
+

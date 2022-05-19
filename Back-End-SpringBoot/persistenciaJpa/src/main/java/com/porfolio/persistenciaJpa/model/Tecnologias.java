@@ -18,7 +18,7 @@ public class Tecnologias {
     
     @Id
     @Column(name= "idTec")
-    @GeneratedValue (strategy= GenerationType.AUTO)
+    @GeneratedValue (strategy= GenerationType.IDENTITY)
     private Long idTec;
     
     @Column (name= "nombreTec")
@@ -27,11 +27,15 @@ public class Tecnologias {
     @Column( name= "porcentaje")
     private int porcentaje;
     
+    @Column (name= "id_persona")
+    private Long id_persona;
+    
     public Tecnologias(){}
     
-    public Tecnologias( Long iTec, String nomTec, int porcen){
+    public Tecnologias( Long iTec, String nomTec, int porcen, Persona i_pers){
         this.idTec= iTec;
         this.nombreTec= nomTec;
         this.porcentaje= porcen;
+        this.id_persona= i_pers.getId();
     }
 }

@@ -1,0 +1,27 @@
+<div class="row">
+  <h2>Experiencia laboral</h2>
+  <div class="col-lg-1"></div>
+  <div class="col-lg-11">
+    <ul *ngFor="let expList of expLaboList">
+      <div class="col text-center">
+        <a class="btn btn-primary tooltips"
+          data-placement="top"
+          data-toggle="tooltip"
+          data-original-title="Edit"
+          ><i class="fa fa-pencil"></i>
+        </a>
+        <a class="btn btn-secondary tooltips"
+          data-placement="top"
+          data-toggle="tooltip"
+          data-original-title="Delete"
+          ><i class="fa fa-times"></i>
+        </a>
+      </div>
+      <li><h3>{{expList.nombre_empresa}}</h3> - <h4>Desde {{expList.fecha_inicio}} hasta {{expList.fecha_fin}}</h4></li>
+      <p>{{expList.descripcion}}</p>
+      <p>El cargo es: {{expList.puesto}}</p>
+
+    </ul>
+
+  </div>
+</div>

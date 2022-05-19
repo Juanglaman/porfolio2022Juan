@@ -16,7 +16,7 @@ import lombok.Setter;
 public class Persona implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String nombre;
@@ -29,17 +29,17 @@ public class Persona implements Serializable {
     private String url_foto_perfil;
     private String url_foto_baner;
     
-    @OneToMany (fetch = FetchType.LAZY, mappedBy= "id_exp")
+    /*@OneToMany (fetch = FetchType.LAZY, mappedBy= "id_persona")
     private List<ExpLaboral> expList;
-    
-    @OneToMany (fetch = FetchType.LAZY, mappedBy= "idEdu")
+    */
+    /*@OneToMany (fetch = FetchType.LAZY, mappedBy= "id_persona")
     private List<Educacion> eduList;
     
-    @OneToMany (fetch = FetchType.LAZY, mappedBy= "idPro")
+    @OneToMany (fetch = FetchType.LAZY, mappedBy= "id_persona")
     private List<Proyectos> proList;
     
-    @OneToMany (fetch = FetchType.LAZY, mappedBy= "idTec")
-    private List<Tecnologias> tecList;
+    @OneToMany (fetch = FetchType.LAZY, mappedBy= "id_persona")
+    private List<Tecnologias> tecList;*/
 
     public Persona(){}
     

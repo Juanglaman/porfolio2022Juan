@@ -1,0 +1,73 @@
+.row{
+    background-color: #109d1a70;
+}
+div {
+    text-align: center;
+}
+.baner{
+  width: 100%;
+  height: 500px;
+}
+#fotoperfil img {
+  border-radius: 50%;
+  box-shadow: 3px 3px 3px grey;
+}
+#nombre {
+  margin-top: 5%;
+}
+span{
+  margin-top: 3%;
+}
+
+@media(min-width: 1250px){
+  #fotoperfil{
+    position: absolute;
+    width: 17%;
+    left: 2%;
+    top: 375px;
+  }
+
+}
+@media(max-width: 1249px){
+  #fotoperfil{
+    position: absolute;
+    width: 17%;
+    left: 2%;
+    top: 402px;
+  }
+
+}
+
+@media(max-width: 992px){
+  #fotoperfil{
+    position: absolute;
+    width: 17%;
+    left: 2%;
+    top: 435px;
+  }
+}
+
+@media(max-width: 768px){
+  #fotoperfil{
+    position: absolute;
+    width: 20%;
+    left: 2%;
+    top: 452px;
+  }
+}
+
+@media(max-width: 575px){
+    #fotoperfil{
+      position: absolute;
+      width: 30%;
+      border-radius: 95%;
+      box-shadow: 3px 3px 3px grey;
+      left: 36%;
+      top: 435px;
+    }
+
+    .row{
+      margin: 1%;
+      padding-top: 8%;
+    }
+}

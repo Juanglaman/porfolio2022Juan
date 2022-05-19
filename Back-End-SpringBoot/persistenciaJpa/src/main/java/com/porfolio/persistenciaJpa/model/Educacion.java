@@ -1,24 +1,23 @@
 
 package com.porfolio.persistenciaJpa.model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter @Setter
-@Table (name= "educacion")
-public class Educacion {
+public class Educacion implements Serializable {
     
-    @Column (name= "idEdu")
+    @Column (name= "id_edu")
     @Id
-    @GeneratedValue( strategy= GenerationType.AUTO)
-    private Long idEdu;
+    @GeneratedValue( strategy= GenerationType.IDENTITY)
+    private Long id_edu;
     
     @Column (name="tituloEdu")
     private String tituloEdu;
@@ -32,13 +31,17 @@ public class Educacion {
     @Column (name="descripEdu")
     private String descripEdu;
     
+    @Column (name= "id_persona")
+    private Long id_persona;
+    
     public Educacion(){}
     
-    public Educacion( Long iEd, String titEdu, String anioEgre, String nombreInst, String descEdu){
-        this.idEdu= iEd;
+    public Educacion( Long iEd, String titEdu, String anioEgre, String nombreInst, String descEdu, Persona i_pers){
+        this.id_edu= iEd;
         this.tituloEdu= titEdu;
         this.anioegreso= anioEgre;
         this.nombinstituto= nombreInst;
         this.descripEdu= descEdu;
+        this.id_persona= i_pers.getId();
     }
 }

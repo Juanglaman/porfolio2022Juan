@@ -9,28 +9,44 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class EducacionService {
+public class EducacionService implements IEducacionService{
     
-    private final EducacionRepository eduRepo;
-    
+    //private final EducacionRepository eduRepo;
     @Autowired
+    public EducacionRepository eduRepo;
+    
+   
     public EducacionService(EducacionRepository eduRepo){
         this.eduRepo = eduRepo;
     }
-    
-    public Educacion agregarEducacion( Educacion educacion){
-        return eduRepo.save(educacion);
-    }
-    
-    public List buscarEducacion( Educacion educacion){
+
+    /*@Override
+    public List<Educacion> verEducacion() {
+        return eduRepo.findAll()
+    }*/
+    @Override
+    public List<Educacion> verEducacion(){
         return eduRepo.findAll();
     }
-    
-    public Educacion editarEducacion( Educacion educacion){
-        return eduRepo.save(educacion);
+
+    @Override
+    public void addEducacion(Educacion edu) {
+        eduRepo.save(edu);
+    }
+
+    @Override
+    public void editEducacion(Educacion edu) {
+        eduRepo.save(edu);
+    }
+
+    @Override
+    public void deleteEducacion(Long id_edu) {
+        eduRepo.deleteById(id_edu);
+    }
+
+    @Override
+    public Educacion buscarEducacion(Long id_edu) {
+        return eduRepo.findById(id_edu).orElse(null);
     }
     
-    public void borrarEducacion( Long id){
-        eduRepo.deleteById(id);
-    }
 }

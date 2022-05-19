@@ -1,0 +1,19 @@
+.row{
+  background-color: blue;
+}
+.logoAp{
+    text-align: left;
+  }
+.logo{
+  width: 170px;
+}
+  .redes img{
+    width: 50px;
+  }
+  .redes{
+    text-align: right;
+    margin-top: 20px;;
+  }
+  .redes a {
+    margin-right: 10px;
+  }

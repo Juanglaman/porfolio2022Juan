@@ -36,10 +36,10 @@ public class controller {
        persoServ.editarPersona(pers);
     }
     
-    @PostMapping ("/api/Inicio/")
+    @PostMapping ("/api/inicio/")
     @ResponseBody
-    public Persona buscarPersona(@RequestBody Long id){
-       return persoServ.buscarPersona(id);
+    public Persona buscarPersona(@RequestBody Persona pers){
+       return persoServ.buscarPersona(pers.getId());
     }
     
     @DeleteMapping ("/api/delete/{id}")

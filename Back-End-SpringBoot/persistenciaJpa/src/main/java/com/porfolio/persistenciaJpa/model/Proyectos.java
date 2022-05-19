@@ -16,7 +16,7 @@ public class Proyectos {
     
     @Id
     @Column (name= "idPro")
-    @GeneratedValue (strategy= GenerationType.AUTO)
+    @GeneratedValue (strategy= GenerationType.IDENTITY)
     private Long idPro;
     
     @Column (name= "nombrePro")
@@ -37,9 +37,12 @@ public class Proyectos {
     @Column (name= "linkPro")
     private String linkPro;
     
+    @Column (name= "id_persona")
+    private Long id_persona;
+    
     public Proyectos(){}
     
-    public Proyectos( Long ipro, String nomPro, String descPro, String fecInPro, String fecFinPro, String imag, String link){
+    public Proyectos( Long ipro, String nomPro, String descPro, String fecInPro, String fecFinPro, String imag, String link, Persona i_pers){
         this.idPro= ipro;
         this.nombrePro= nomPro;
         this.descripcionPro= descPro;
@@ -47,5 +50,6 @@ public class Proyectos {
         this.fechaFinPro= fecFinPro;
         this.urlImgenPro= imag;
         this.linkPro= link;
+        this.id_persona= i_pers.getId();
     }
 }
