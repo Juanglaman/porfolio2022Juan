@@ -1,8 +1,8 @@
 export interface Educacion{
     id_edu: number;
     anioegreso: String;
-    descripEdu: String;
+    descrip_edu: String;
     nombinstituto: String;
-    tituloEdu: String;
+    titulo_edu: String;
     id_persona: number;
 }

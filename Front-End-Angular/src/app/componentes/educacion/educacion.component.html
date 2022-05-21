@@ -4,13 +4,180 @@
 
   <div class="col-lg-11">
 
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#Modal1">
+      Añadir educación
+      </button>
+      <!--<button type="button" class="btn btn-secondary" (click)="onOpenModal('add')">
+          <a class="nav-link" style="color: rgb(213, 213, 223);">
+            Añadir educación<span class="sr-only">(current)</span>
+          </a>
+
+        </button>-->
+
     <ul *ngFor="let edu of eduList">
 
+      <div class="col text-center">
+        <!--(click)="onOpenModal('edit', edu)"-->
+        <a
+
+          class="btn btn-primary tooltips"
+          data-placement="top"
+          data-toggle="tooltip"
+          data-original-title="Edit"
+          ><i class="fa fa-pencil"></i>
+        </a>
+
+        <a
+          (click)="deleteEducacionBoton(edu.id_edu)"
+          class="btn btn-secondary tooltips"
+          data-placement="top"
+          data-toggle="tooltip"
+          data-original-title="Delete"
+          ><i class="fa fa-times"></i>
+        </a>
+      </div>
       <li><h3>{{edu.nombinstituto}}</h3> - <h4>Año de egreso {{edu.anioegreso}}</h4></li>
-      <h4>{{edu.tituloEdu}}</h4>
-      <p>{{edu.descripEdu}}</p>
+      <h4>{{edu.titulo_edu}}</h4>
+      <p>{{edu.descrip_edu}}</p>
     </ul>
 
   </div>
-</div>
+  <!--MODAL SIMPLE-->
+    <div class="modal fade"
+      id="Modal1"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="Modal1"
+      aria-hidden="true">
 
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="ModalLabel">Añadir educación</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="signupForm" (ngSubmit)="enviar()">
+                  <div class="form-group">
+                      <label for="titulo_edu">Titulo:</label>
+                      <input type="text"
+                      formControlName="titulo_edu"
+                      class="form-control"
+                      id="titulo_edu"
+                      placeholder="Titulo"
+                      required
+                      >
+
+                    <label for="anioegreso">Año de egreso:</label>
+                    <input type="text"
+                    formControlName="anioegreso"
+                    class="form-control"
+                    id="anioegreso"
+                    placeholder="Egreso"
+                    required
+                    >
+
+                    <label for="descrip_edu">Descripcion:</label>
+                    <input type="text"
+                    formControlName="descrip_edu"
+                    class="form-control"
+                    id="descrip_edu"
+                    placeholder="Descripcion"
+                    required
+                    >
+
+                    <label for="nombinstituto">Nombre del instituto:</label>
+                    <input type="text"
+                    formControlName="nombinstituto"
+                    class="form-control"
+                    id="nombinstituto"
+                    placeholder="Nombre instituto"
+                    required
+                    >
+                    <button [disabled]="signupForm.invalid">Ingresar</button>
+                </div>
+              </form>
+
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--Modal educacion
+  <div class="modal fade"
+       id="addEducacionModal"
+       tabindex="-1" role="dialog"
+       aria-labelledby="addEducacionModalLabel"
+       aria-hidden="true">
+       <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="addEducacionModal">Añadir educación</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <form #addForm="ngForm" (ngSubmit)="onAddEducacion(addForm)">
+                <div class="form-group">
+                    <label for="tituloEdu">Titulo</label>
+                    <input type="text"
+                    ngModel
+                    name="tituloEdu"
+                    class="form-control"
+                    id="tituloEdu"
+                    placeholder="Titulo"
+                    required
+                    >
+                </div>
+                <div class="form-group">
+                  <label for="anioegreso">Año de egreso</label>
+                  <input type="text"
+                  ngModel
+                  name="anioegreso"
+                  class="form-control"
+                  id="anioegreso"
+                  placeholder="Egreso"
+                  required
+                  >
+                </div>
+                <div class="form-group">
+                  <label for="descripEdu">Descripcion</label>
+                  <input type="text"
+                  ngModel
+                  name="descripEdu"
+                  class="form-control"
+                  id="descripEdu"
+                  placeholder="Descripcion"
+                  required
+                  >
+                </div>
+                <div class="form-group">
+                  <label for="nombinstituto">Nombre del instituto</label>
+                  <input type="text"
+                  ngModel
+                  name="nombinstituto"
+                  class="form-control"
+                  id="nombinstituto"
+                  placeholder="Nombre instituto"
+                  required
+                  >
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button [disabled]="addForm.invalid" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>-->
+
+</div>

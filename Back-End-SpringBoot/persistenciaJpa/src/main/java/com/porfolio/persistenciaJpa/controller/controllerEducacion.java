@@ -38,7 +38,7 @@ public class controllerEducacion {
         return new ResponseEntity<>(edu, HttpStatus.OK);
     }
     
-    @DeleteMapping ("/api/educacion/borrar/{id}")
+    @DeleteMapping ("/api/educacion/borrar/{id_edu}")
     public void deleteEducacion(@PathVariable Long id_edu){
         eduServ.deleteEducacion(id_edu);
     }

@@ -19,8 +19,8 @@ public class Educacion implements Serializable {
     @GeneratedValue( strategy= GenerationType.IDENTITY)
     private Long id_edu;
     
-    @Column (name="tituloEdu")
-    private String tituloEdu;
+    @Column (name="titulo_edu")
+    private String titulo_edu;
     
     @Column (name="anioegreso")
     private String anioegreso;
@@ -28,20 +28,16 @@ public class Educacion implements Serializable {
     @Column (name="nombinstituto")
     private String nombinstituto;
     
-    @Column (name="descripEdu")
-    private String descripEdu;
-    
-    @Column (name= "id_persona")
-    private Long id_persona;
+    @Column (name="descrip_edu")
+    private String descrip_edu;
     
     public Educacion(){}
     
-    public Educacion( Long iEd, String titEdu, String anioEgre, String nombreInst, String descEdu, Persona i_pers){
+    public Educacion( Long iEd, String titEdu, String anioEgre, String nombreInst, String descEdu){
         this.id_edu= iEd;
-        this.tituloEdu= titEdu;
+        this.titulo_edu= titEdu;
         this.anioegreso= anioEgre;
         this.nombinstituto= nombreInst;
-        this.descripEdu= descEdu;
-        this.id_persona= i_pers.getId();
+        this.descrip_edu= descEdu;
     }
 }

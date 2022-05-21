@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './componentes/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { PersonaComponent } from './componentes/persona/persona.component';
 import { EducacionComponent } from './componentes/educacion/educacion.component';
 import { LaboralComponent } from './componentes/laboral/laboral.component';
+import { ModalComponent } from './componentes/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { LaboralComponent } from './componentes/laboral/laboral.component';
     HeaderComponent,
     PersonaComponent,
     EducacionComponent,
-    LaboralComponent
+    LaboralComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
