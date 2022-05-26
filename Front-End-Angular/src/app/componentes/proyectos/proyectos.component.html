@@ -1,0 +1,164 @@
+<div class="row">
+  <h2>Proyectos realizados</h2>
+  <div class="col-4 boton">
+        <button *ngIf="(uLoged==='1')"
+                type="button"
+                class="btn btn-secondary"
+                data-toggle="modal"
+                data-target="#Modal1Proyectos">
+                    Añadir nuevo Proyecto
+        </button>
+        <hr>
+  </div>
+  <div class="col-8"></div>
+
+  <div class="col-1"></div>
+  <div class="col-10"> </div>
+
+  <ul *ngFor="let pro of proList" >
+
+    <div *ngIf="(uLoged==='1')">
+      <form [formGroup]="editarFormProyectos" (ngSubmit)="editarProyecto(pro.id_pro)" enctype="multipart/form-data">
+          <div class="form-group">
+              <input type="hidden" formControlName="id_pro">
+
+              <label for="nombre_pro">Nombre del proyecto:</label>
+              <input type="text" formControlName="nombre_pro" class="form-control" name="nombre_pro"
+                  id="nombre_pro" placeholder="{{pro.nombre_pro}}" required>
+
+              <label for="descripcion_pro">Descripcion del proyecto:</label>
+              <input type="text"  formControlName="descripcion_pro" class="form-control"
+                    id="descripcion_pro" placeholder="{{pro.descripcion_pro}}" required>
+
+              <label for="link_pro">Link del proyecto:</label>
+              <input type="text" formControlName="link_pro" class="form-control" id="link_pro"
+                    placeholder="{{pro.link_pro}}" required>
+
+              <label for="fecha_inicio_pro">Fecha de inicio:</label>
+              <input type="text" formControlName="fecha_inicio_pro" class="form-control"
+                    id="fecha_inicio_pro" placeholder="{{pro.fecha_inicio_pro}}" required>
+
+              <label for="fecha_fin_pro">Fecha de fin del proyecto:</label>
+              <input type="text" formControlName="fecha_fin_pro" class="form-control"
+                          id="fecha_fin_pro" placeholder="{{pro.fecha_fin_pro}}" required>
+
+              <label for="url_imagen_pro">Imagen:</label>
+              <input type="file" formControlName="url_imagen_pro" class="form-control"
+                         id="url_imagen_pro" required>
+
+          </div>
+          <div class="col text-center">
+
+            <button [disabled]="editarFormProyectos.invalid" class="btn btn-primary tooltips">
+              <i class="fa fa-pencil"> E d i t a r</i>
+            </button>
+
+            <a *ngIf="(uLoged==='1')"
+              (click)="deleteProyectoBoton(pro.id_pro)"
+              class="btn btn-danger tooltips"
+              ><i class="fa fa-times"></i> Eliminar
+            </a>
+        </div>
+      </form>
+      <hr>
+  </div>
+  <div class="col-1"></div>
+
+    <div *ngIf="(this.uLoged!=='1')">
+      <div class="col-sm-12 col-md-6 col-lg-6 parte1">
+          <h3>{{pro.nombre_pro}}</h3>
+          <p>{{pro.descripcion_pro}}
+          </p>
+          <p>Link:  <a href="{{pro.link_pro}}">{{pro.link_pro}}</a></p>
+      </div>
+      <div class="col-sm-12 col-md-5 col-lg-5 parte2">
+            <img src="{{pro.url_imagen_pro}}" alt="Imagen del proyecto">
+      </div>
+    </div>
+  </ul>
+
+ <!--MODAL AÑADIR-->
+ <div class="modal fade"
+ id="Modal1Proyectos"
+ tabindex="-1"
+ role="dialog"
+ aria-labelledby="Modal1Proyectos"
+ aria-hidden="true">
+
+ <div class="modal-dialog" role="document">
+     <div class="modal-content">
+         <div class="modal-header">
+             <h5 class="modal-title" id="ModalLabel">Añadir proyecto</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">×</span>
+             </button>
+         </div>
+         <div class="modal-body">
+           <form [formGroup]="signupFormProyectos" (ngSubmit)="enviarProyecto()">
+             <div class="form-group">
+                 <label for="nombre_pro">Nombre:</label>
+                 <input type="text"
+                 formControlName="nombre_pro"
+                 class="form-control"
+                 id="nombre_pro"
+                 placeholder="Nombre"
+                 required
+                 >
+
+               <label for="descripcion_pro">Descripcion:</label>
+               <input type="text"
+               formControlName="descripcion_pro"
+               class="form-control"
+               id="descripcion_pro"
+               placeholder="Descripcion"
+               required
+               >
+
+               <label for="link_pro">Link:</label>
+               <input type="text"
+               formControlName="link_pro"
+               class="form-control"
+               id="link_pro"
+               placeholder="Link"
+               required
+               >
+
+               <label for="fecha_inicio_pro">Fecha de inicio:</label>
+               <input type="text"
+               formControlName="fecha_inicio_pro"
+               class="form-control"
+               id="fecha_inicio_pro"
+               placeholder="Fecha de inicio"
+               required
+               >
+
+               <label for="fecha_fin_pro">Fecha de fin del proyecto:</label>
+               <input type="text"
+               formControlName="fecha_fin_pro"
+               class="form-control"
+               id="fecha_fin_pro"
+               placeholder="Fecha de fin del proyecto"
+               required
+               >
+
+               <label for="url_imagen_pro">Imagen:</label>
+               <input type="file"
+               formControlName="url_imagen_pro"
+               class="form-control"
+               id="url_imagen_pro"
+               required
+               >
+
+               <button [disabled]="signupFormProyectos.invalid">Ingresar nuevo proyecto</button>
+           </div>
+         </form>
+
+         </div>
+         <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+         </div>
+     </div>
+ </div>
+</div>
+
+</div>

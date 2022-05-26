@@ -7,5 +7,4 @@ export interface Explaboral{
   descripcion: String;
   puesto: String;
   url_logo_empresa: String;
-  id_persona: number;
 }

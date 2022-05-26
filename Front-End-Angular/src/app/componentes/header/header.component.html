@@ -1,13 +1,23 @@
 
   <div class="row">
       <div class="col-5 logoAp">
-        <img class= "logo" src="../../../assets/APLogo.png" alt="Logo Argentina programa">
+        <a routerLink="/inicio">
+            <img class= "logo" src="../../../assets/APLogo.png" alt="Logo Argentina programa">
+        </a>
       </div>
 
       <div class="col-7 redes">
-          <a href=""><img class="facebook" src="../../../assets/facebook.png" alt=""></a>
-          <a href=""><img class="github" src="../../../assets/github.png" alt=""></a>
-          <a href=""><img class="linkedin" src="../../../assets/linkedin.png" alt=""></a>
+          <div>
+              <a href=""><img class="facebook" src="../../../assets/facebook.png" alt=""></a>
+              <a href=""><img class="github" src="../../../assets/github.png" alt=""></a>
+              <a href=""><img class="linkedin" src="../../../assets/linkedin.png" alt=""></a>
+          </div>
+          <div *ngIf="(uLoged!=='1')" class="login">
+            <a class="btn btn-dark"  routerLink="/login">Iniciar sesion</a>
+          </div>
+          <div *ngIf="(uLoged==='1')" class="login">
+            <a class="btn btn-dark"  (click)="salir()">Cerrar sesion</a>
+          </div>
       </div>
   </div>
 

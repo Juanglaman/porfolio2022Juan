@@ -1,0 +1,11 @@
+.row{
+  margin: 1%;
+  background-color: #eef7f6ba;
+  width: 98%;
+  text-align: center;
+}
+
+.login{
+  width: 30%;
+  margin: 8% auto;
+}

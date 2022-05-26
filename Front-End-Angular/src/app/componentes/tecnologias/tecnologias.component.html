@@ -1,0 +1,190 @@
+<div class="row">
+  <h2>Hard & soft skills</h2>
+  <div class="col-lg-4"></div>
+  <div *ngIf="(uLoged==='1')" class="col-4 boton">
+      <button type="button" class="btn btn-secondary"
+                                        data-toggle="modal" data-target="#Modal1Tecno">
+          Añadir nueva Tecnologia
+        </button>
+        <hr>
+  </div>
+  <div class="col-lg-4"></div>
+
+  <div *ngFor="let tecno of tecnoList" class="text-center col-sm-4 col-md-4 col-lg-4"  >
+
+    <div class="tecno" style="background-image: url('{{tecno.url_imagen_tec}}');">
+
+      <circle-progress
+        [percent]="tecno.porcentaje"
+        [radius]="100"
+        [showUnits]="true"
+        [showSubtitle]="true"
+        [outerStrokeWidth]="20"
+        [innerStrokeWidth]="10"
+        [outerStrokeColor]="'#78C000'"
+        [innerStrokeColor]="'#C7E596'"
+        [animation]="true"
+        [animationDuration]="600"
+    >
+
+    </circle-progress>
+  </div>
+  <a *ngIf="(uLoged==='1')"
+                (click)="deleteTecnologia(tecno.id_tec)"
+                class="btn btn-danger tooltips"
+                ><i class="fa fa-times"></i> Eliminar
+              </a>
+  </div>
+
+
+  <!--MODAL AÑADIR-->
+  <div class="modal fade"
+  id="Modal1Tecno"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="Modal1Tecno"
+  aria-hidden="true">
+
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="ModalLabel">Añadir nueva Tenologia</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="signupTecnoForm" (ngSubmit)="enviar()">
+              <div class="form-group">
+                  <label for="nombre_tec">Nombre de la tecnologia:</label>
+                  <input type="text"
+                  formControlName="nombre_tec"
+                  class="form-control"
+                  id="nombre_tec"
+                  placeholder="nombre de tecnologia"
+                  required
+                  >
+
+                <label for="porcentaje">Porcentaje:</label>
+                <input type="text"
+                formControlName="porcentaje"
+                class="form-control"
+                id="porcentaje"
+                placeholder="Porcentaje"
+                required
+                >
+
+                <label for="url_imagen_tec">Imagen para mostrar:</label>
+                <input type="file"
+                formControlName="url_imagen_tec"
+                class="form-control"
+                id="url_imagen_tec"
+                placeholder="Imagen para mostrar"
+                >
+
+                <button [disabled]="signupTecnoForm.invalid">Ingresar nueva Tecnologia</button>
+            </div>
+          </form>
+
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+</div>
+
+
+<!--
+  <div class="text-center col-sm-4 col-md-4 col-lg-4">
+    <circle-progress
+        [percent]="85"
+        [radius]="100"
+        [showUnits]="false"
+        [imageSrc]="'../../../assets/csslogo.fw.png'"
+        [showImage]="true"
+        [imageWidth]="70"
+        [imageHeight]="70"
+        [showSubtitle]="false"
+        [outerStrokeWidth]="16"
+        [innerStrokeWidth]="8"
+        [outerStrokeColor]="'#78C000'"
+        [innerStrokeColor]="'#C7E596'"
+        [animation]="true"
+        [animationDuration]="600"
+    ></circle-progress>
+  </div>
+  <div class="text-center col-sm-4 col-md-4 col-lg-4">
+    <circle-progress
+        [percent]="60"
+        [radius]="100"
+        [showUnits]="false"
+        [imageSrc]="'../../../assets/jslogo.png'"
+        [showImage]="true"
+        [imageWidth]="70"
+        [imageHeight]="70"
+        [showSubtitle]="false"
+        [outerStrokeWidth]="16"
+        [innerStrokeWidth]="8"
+        [outerStrokeColor]="'#78C000'"
+        [innerStrokeColor]="'#C7E596'"
+        [animation]="true"
+        [animationDuration]="600"
+    ></circle-progress>
+  </div>
+  <div class="text-center col-sm-4 col-md-4 col-lg-4">
+    <circle-progress
+        [percent]="60"
+        [radius]="100"
+        [showUnits]="false"
+        [imageSrc]="'../../../assets/PHP-logo.png'"
+        [showImage]="true"
+        [imageWidth]="70"
+        [imageHeight]="70"
+        [showSubtitle]="false"
+        [outerStrokeWidth]="16"
+        [innerStrokeWidth]="8"
+        [outerStrokeColor]="'#78C000'"
+        [innerStrokeColor]="'#C7E596'"
+        [animation]="true"
+        [animationDuration]="300"
+    ></circle-progress>
+  </div>
+  <div class="text-center col-sm-4 col-md-4 col-lg-4">
+    <circle-progress
+        [percent]="70"
+        [radius]="100"
+        [showUnits]="false"
+        [title]="'Ingles'"
+        [titleColor]="'#000'"
+        titleFontSize="2em"
+        [showSubtitle]="false"
+        [outerStrokeWidth]="16"
+        [innerStrokeWidth]="8"
+        [outerStrokeColor]="'#78C000'"
+        [innerStrokeColor]="'#C7E596'"
+        [animation]="true"
+        [animationDuration]="300"
+    ></circle-progress>
+  </div>
+  <div class="text-center col-sm-4 col-md-4 col-lg-4">
+    <circle-progress
+        [percent]="95"
+        [radius]="100"
+        [showUnits]="false"
+        [imageSrc]="'../../../assets/tenEQUIPO.fw.png'"
+        [showImage]="true"
+        [imageWidth]="150"
+        [imageHeight]="150"
+        [showSubtitle]="false"
+        [outerStrokeWidth]="16"
+        [innerStrokeWidth]="8"
+        [outerStrokeColor]="'#78C000'"
+        [innerStrokeColor]="'#C7E596'"
+        [animation]="true"
+        [animationDuration]="300"
+    ></circle-progress>
+  </div>
+-->

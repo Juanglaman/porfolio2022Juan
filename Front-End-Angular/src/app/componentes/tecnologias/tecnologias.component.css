@@ -1,0 +1,15 @@
+.row{
+  margin: 1%;
+  padding: 2%;
+  background-color: #eef7f6ba;
+  width: 98%;
+}
+.tecno{
+  background-size: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.boton{
+  margin: 5px 0;
+}

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class EducacionService {
 
   private apiServerUrl= environment.apiBaseUrl;
@@ -22,7 +23,7 @@ export class EducacionService {
   }
 
   public updateEducacion(educacion: Educacion):Observable<Educacion>{
-    return this.http.put<Educacion>(`${this.apiServerUrl}/api/educacion/editar`, educacion);
+    return this.http.put<Educacion>(`${this.apiServerUrl}/api/educacion/editar/`, educacion);
   }
 
   public deleteEducacion(id_edu: number): Observable<void>{

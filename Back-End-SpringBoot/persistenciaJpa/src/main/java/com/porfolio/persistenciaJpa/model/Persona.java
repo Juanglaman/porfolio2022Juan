@@ -17,7 +17,7 @@ public class Persona implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_per;
     
     private String nombre;
     private String apellido;
@@ -44,7 +44,7 @@ public class Persona implements Serializable {
     public Persona(){}
     
     public Persona(Long num, String nom, String ape, String domi, String fecha, String tel, String mail, String sob, String foto_per, String foto_ban){
-        this.id = num;
+        this.id_per = num;
         this.nombre = nom;
         this.apellido = ape;
         this.domicilio = domi;

@@ -1,19 +1,24 @@
 .row{
-    background-color: #109d1a70;
-}
-div {
-    text-align: center;
+    background-color: #336600;
+    width: 100%;
+    margin: 0;
+    color: white;
 }
 .baner{
   width: 100%;
-  height: 500px;
+  height: 540px;
 }
 #fotoperfil img {
   border-radius: 50%;
   box-shadow: 3px 3px 3px grey;
 }
 #nombre {
-  margin-top: 5%;
+  margin-top: 6%;
+  padding-left: 4%;
+}
+.acerca{
+  margin-top: 8%;
+  padding-right: 7%;
 }
 span{
   margin-top: 3%;
@@ -24,7 +29,7 @@ span{
     position: absolute;
     width: 17%;
     left: 2%;
-    top: 375px;
+    top: 430px;
   }
 
 }

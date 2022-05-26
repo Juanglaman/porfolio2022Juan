@@ -18,8 +18,8 @@ public class ExpLaboral implements Serializable {
     
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY)
-    @Column (name = "id")
-    private Long id;
+    @Column (name = "id_exp")
+    private Long id_exp;
     
     @Column (name= "nombre_empresa")
     private String nombre_empresa;
@@ -42,13 +42,11 @@ public class ExpLaboral implements Serializable {
     @Column (name= "url_logo_empresa")
     private String url_logo_empresa;
     
-    @Column (name= "id_persona")
-    private Long id_persona;
-    
     public ExpLaboral(){}
     
-    public ExpLaboral( Long i, String nom, Boolean tact, String fecInici, String fefin, String des, String pues, String imgEmp, Persona i_pers){
-        this.id= i;
+    public ExpLaboral( Long i, String nom, Boolean tact, String fecInici, String fefin, String des, String pues, String imgEmp){
+        
+        this.id_exp= i;
         this.nombre_empresa= nom;
         this.trabajoAct= tact;
         this.fecha_inicio= fecInici;
@@ -56,6 +54,5 @@ public class ExpLaboral implements Serializable {
         this.descripcion= des;
         this.puesto= pues;
         this.url_logo_empresa= imgEmp;
-        this.id_persona= i_pers.getId();
     }
 }

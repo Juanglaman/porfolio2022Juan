@@ -1,0 +1,27 @@
+.row {
+  background-color: #3a3838;
+  color: white;
+  margin: 0;
+  padding-top: 10px;;
+}
+
+#textfoter{ padding-left: 2%; }
+
+.logoFoter{ text-align: right; }
+
+.logoFoter img{ width: 70%; }
+
+.redes img{ width: 50px; }
+
+.redes { margin-top: 20px; }
+
+.redes a { margin-right: 10px; }
+
+@media(max-width: 572px){
+  img{
+    width: 30%;
+  }
+  .row{
+   text-align: center;
+  }
+}

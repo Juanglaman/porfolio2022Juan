@@ -1,27 +1,114 @@
 <div class="row">
   <h2>Experiencia laboral</h2>
   <div class="col-lg-1"></div>
-  <div class="col-lg-11">
-    <ul *ngFor="let expList of expLaboList">
-      <div class="col text-center">
-        <a class="btn btn-primary tooltips"
-          data-placement="top"
-          data-toggle="tooltip"
-          data-original-title="Edit"
-          ><i class="fa fa-pencil"></i>
-        </a>
-        <a class="btn btn-secondary tooltips"
-          data-placement="top"
-          data-toggle="tooltip"
-          data-original-title="Delete"
-          ><i class="fa fa-times"></i>
-        </a>
+  <div class="col-lg-10">
+
+      <div *ngIf="(uLoged==='1')" class="boton">
+        <button type="button" class="btn btn-secondary"
+                                        data-toggle="modal" data-target="#ModalExpLabo">
+          Añadir nueva experiencia laboral
+        </button>
+        <hr>
       </div>
-      <li><h3>{{expList.nombre_empresa}}</h3> - <h4>Desde {{expList.fecha_inicio}} hasta {{expList.fecha_fin}}</h4></li>
-      <p>{{expList.descripcion}}</p>
-      <p>El cargo es: {{expList.puesto}}</p>
+    <ul *ngFor="let expList of expLaboList">
+
+        <div *ngIf="(uLoged==='1')">
+          <form [formGroup]="laboForm" (ngSubmit)="editarExpLaboral(expList.id_exp)">
+              <div class="form-group">
+                  <input type="hidden" formControlName="id_exp">
+
+                  <label for="nombre_empresa">Nombre de la empresa:</label>
+                  <input type="text" formControlName="nombre_empresa" class="form-control"
+                      id="nombre_empresa" placeholder="{{expList.nombre_empresa}}" required>
+
+                  <label for="fecha_inicio">Fecha de inicio del trabajo:</label>
+                  <input type="text"  formControlName="fecha_inicio" class="form-control"
+                        id="fecha_inicio" placeholder="{{expList.fecha_inicio}}" required>
+
+                  <label for="fecha_fin">Fecha de fin del trabajo:</label>
+                  <input type="text" formControlName="fecha_fin" class="form-control" id="fecha_fin"
+                        placeholder="{{expList.fecha_fin}}" required>
+
+                  <label for="descripcion">Descripcion del trabajo:</label>
+                  <input type="text" formControlName="descripcion" class="form-control"
+                        id="descripcion" placeholder="{{expList.descripcion}}" required>
+
+                  <label for="puesto">Cargo puesto ejercido:</label>
+                  <input type="text" formControlName="puesto" class="form-control"
+                              id="puesto" placeholder="{{expList.puesto}}" required>
+              </div>
+              <div class="col text-center">
+
+                <button [disabled]="laboForm.invalid" class="btn btn-primary tooltips">
+                  <i class="fa fa-pencil"> E d i t a r</i>
+                </button>
+
+                <a *ngIf="(uLoged==='1')"
+                  (click)="deleteExpLaboral(expList.id_exp)"
+                  class="btn btn-danger tooltips"
+                  ><i class="fa fa-times"></i> Eliminar
+                </a>
+            </div>
+          </form>
+          <hr>
+          <br>
+      </div>
+
+      <div *ngIf="(this.uLoged!=='1')" class="todos">
+          <li><h3>{{expList.nombre_empresa}}</h3> - <h4>Desde {{expList.fecha_inicio}} hasta {{expList.fecha_fin}}</h4></li>
+          <p>{{expList.descripcion}}</p>
+          <p>El cargo es: {{expList.puesto}}</p>
+          <hr>
+          <br>
+      </div>
 
     </ul>
-
   </div>
+  <div class="col-1"></div>
+  <!--MODAL AÑADIR-->
+  <div class="modal fade" id="ModalExpLabo" tabindex="-1" role="dialog"
+              aria-labelledby="ModalExpLabo" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Añadir nueva experiencia laboral</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="modalForm" (ngSubmit)="enviarExpLaboral()">
+                <div class="form-group">
+
+                    <label for="nombre_empresa">Nombre de la empresa:</label>
+                    <input type="text" formControlName="nombre_empresa" class="form-control"
+                      id="nombre_empresa" placeholder="Ingrese nombre de la empresa" required>
+
+                      <label for="fecha_inicio">Fecha de inicio del trabajo:</label>
+                      <input type="text"  formControlName="fecha_inicio" class="form-control"
+                            id="fecha_inicio" placeholder="Ingrese la fecha de la inicio del trabajo" required>
+
+                      <label for="fecha_fin">Fecha de fin del trabajo:</label>
+                      <input type="text" formControlName="fecha_fin" class="form-control" id="fecha_fin"
+                            placeholder="Ingrese la fecha de fin del trabajo" required>
+
+                      <label for="descripcion">Descripcion del trabajo:</label>
+                      <input type="text" formControlName="descripcion" class="form-control"
+                            id="descripcion" placeholder="Ingrese la descripcion del trabajo" required>
+
+                      <label for="puesto">Cargo puesto ejercido:</label>
+                      <input type="text" formControlName="puesto" class="form-control"
+                                  id="puesto" placeholder="Ingrese el puesto ejercido" required>
+
+                  <button [disabled]="modalForm.invalid">Ingresar nueva experiencia</button>
+              </div>
+            </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 </div>

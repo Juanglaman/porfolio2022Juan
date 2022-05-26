@@ -1,5 +1,6 @@
 .row{
-  background-color: blue;
+  background-color: #336600;
+  width: 100%;
 }
 .logoAp{
     text-align: left;
@@ -7,13 +8,16 @@
 .logo{
   width: 170px;
 }
-  .redes img{
+.redes img{
     width: 50px;
   }
-  .redes{
+.redes{
     text-align: right;
     margin-top: 20px;;
   }
-  .redes a {
+.redes a {
     margin-right: 10px;
+  }
+  .login{
+    margin: 5px 10px;
   }

@@ -17,39 +17,35 @@ public class Proyectos {
     @Id
     @Column (name= "idPro")
     @GeneratedValue (strategy= GenerationType.IDENTITY)
-    private Long idPro;
+    private Long id_pro;
     
-    @Column (name= "nombrePro")
-    private String nombrePro;
+    @Column (name= "nombre_pro")
+    private String nombre_pro;
     
-    @Column (name= "descripcionPro")
-    private String descripcionPro;
+    @Column (name= "descripcion_pro")
+    private String descripcion_pro;
     
-    @Column (name= "fechaInicioPro")
-    private String fechaInicioPro;
+    @Column (name= "fecha_inicio_pro")
+    private String fecha_inicio_pro;
     
-    @Column (name= "fechaFinPro")
-    private String fechaFinPro;
+    @Column (name= "fecha_fin_pro")
+    private String fecha_fin_pro;
     
-    @Column (name= "urlImagenPro")
-    private String urlImgenPro;
+    @Column (name= "url_imagen_pro")
+    private String url_imagen_pro;
     
-    @Column (name= "linkPro")
-    private String linkPro;
-    
-    @Column (name= "id_persona")
-    private Long id_persona;
+    @Column (name= "link_pro")
+    private String link_pro;
     
     public Proyectos(){}
     
-    public Proyectos( Long ipro, String nomPro, String descPro, String fecInPro, String fecFinPro, String imag, String link, Persona i_pers){
-        this.idPro= ipro;
-        this.nombrePro= nomPro;
-        this.descripcionPro= descPro;
-        this.fechaInicioPro= fecInPro;
-        this.fechaFinPro= fecFinPro;
-        this.urlImgenPro= imag;
-        this.linkPro= link;
-        this.id_persona= i_pers.getId();
+    public Proyectos( Long ipro, String nomPro, String descPro, String fecInPro, String fecFinPro, String imag, String link){
+        this.id_pro= ipro;
+        this.nombre_pro= nomPro;
+        this.descripcion_pro= descPro;
+        this.fecha_inicio_pro= fecInPro;
+        this.fecha_fin_pro= fecFinPro;
+        this.url_imagen_pro= imag;
+        this.link_pro= link;
     }
 }

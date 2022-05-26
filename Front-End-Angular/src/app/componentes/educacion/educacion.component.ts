@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Educacion } from 'src/app/models/educacion';
 import { EducacionService } from 'src/app/servicios/educacion.service';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from 'src/app/servicios/login.service';
 
 @Component({
   selector: 'app-educacion',
@@ -12,14 +13,14 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 export class EducacionComponent implements OnInit {
 
   public eduList: Educacion[]=[];
-  public addEducacion: Educacion | undefined;
+  public  uLoged: string | undefined;
 
-  /*public editEducacion: Educacion | undefined;*/
-  public deleteEducacion: Educacion | undefined;
 
+  /*FORMULARIOS*/
   signupForm: FormGroup;
+  editarEducacionForm: FormGroup;
 
-  constructor( private educacionService: EducacionService, private _builder: FormBuilder) {
+  constructor( private educacionService: EducacionService, private _builder: FormBuilder, private loginService: LoginService) {
     this.signupForm = this._builder.group({
       titulo_edu: ['', Validators.required],
       anioegreso: ['', Validators.required],
@@ -27,12 +28,26 @@ export class EducacionComponent implements OnInit {
       nombinstituto: ['', Validators.required]
     })
 
+    this.editarEducacionForm = this._builder.group({
+      id_edu: ['', Validators.nullValidator],
+      titulo_edu: ['', Validators.required],
+      anioegreso: ['', Validators.required],
+      descrip_edu: ['', Validators.required],
+      nombinstituto: ['', Validators.required]
+    })
   }
 
 
 
   ngOnInit(): void {
+
+    this.uLoged = this.loginService.getToken();
+
     this.getPEducacion();
+
+    this.loginService.uLoged$.subscribe( texto =>{
+      this.uLoged= texto;
+    })
   }
 
   public getPEducacion():void{
@@ -46,21 +61,47 @@ export class EducacionComponent implements OnInit {
     })
   }
 
-  enviar(){
-      console.log(this.signupForm.value);
-
+  public enviarEducacion(): void{
 
       this.educacionService.addEducacion(this.signupForm.value).subscribe({
         next: (Response: Educacion) =>{
           console.log(Response);
           this.getPEducacion();
-          this.signupForm.reset();
+          alert("Educacion agregada correctamente");
         },
         error:(error: HttpErrorResponse)=>{
           alert(error.message);
-          this.signupForm.reset();
         }
       })
+  }
+
+  public editarEducacion(id_edu: number): void{
+    this.editarEducacionForm.value.id_edu=id_edu;
+    this.educacionService.updateEducacion(this.editarEducacionForm.value).subscribe({
+      next: (Response: Educacion) =>{
+        console.log(Response);
+        alert("Educacion editada correctamente");
+      },
+      error:(error: HttpErrorResponse)=>{
+        alert(error.message);
+        this.getPEducacion();
+      }
+    })
+  }
+
+  public deleteEducacionBoton(id_edu: number):void{
+    this.educacionService.deleteEducacion(id_edu).subscribe({
+      next: (Response: void) =>{
+        console.log(Response);
+        alert("Educacion eliminada correctamente");
+        this.getPEducacion();
+      },
+      error:(error: HttpErrorResponse)=>{
+        alert(error.message);
+        console.log(id_edu);
+      }
+    })
+
   }
 
   /*public onOpenModal(mode: String, educacion?: Educacion):void{
@@ -112,17 +153,5 @@ export class EducacionComponent implements OnInit {
 
     }*/
 
-    public deleteEducacionBoton(id_edu: number):void{
-      this.educacionService.deleteEducacion(id_edu).subscribe({
-        next: (Response: void) =>{
-          console.log(Response);
-          this.getPEducacion();
-        },
-        error:(error: HttpErrorResponse)=>{
-          alert(error.message);
-          console.log(id_edu);
-        }
-      })
 
-    }
 }

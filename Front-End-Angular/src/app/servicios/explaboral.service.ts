@@ -16,15 +16,15 @@ export class ExplaboralService {
     return this.http.get<Explaboral[]>(`${this.apiServerUrl}/api/explaboral/all`);
   }
 
-  public crearEducacion(labo: Explaboral):Observable<Explaboral>{
+  public crearExplaboral(labo: Explaboral):Observable<Explaboral>{
     return this.http.post<Explaboral>(`${this.apiServerUrl}/api/explaboral/crear`, labo);
   }
 
-  public actualizarEducacion(labo: Explaboral):Observable<Explaboral>{
-    return this.http.put<Explaboral>(`${this.apiServerUrl}/api/explaboral/editar`, labo);
+  public actualizarExplaboral(labo: Explaboral):Observable<Explaboral>{
+    return this.http.put<Explaboral>(`${this.apiServerUrl}/api/explaboral/editar/`, labo);
   }
 
-  public borrarEducacion(id: number): Observable<void>{
+  public borrarExplaboral(id: number): Observable<void>{
     return this.http.delete<void>(`${this.apiServerUrl}/api/explaboral/borrar/${id}`);
   }
 

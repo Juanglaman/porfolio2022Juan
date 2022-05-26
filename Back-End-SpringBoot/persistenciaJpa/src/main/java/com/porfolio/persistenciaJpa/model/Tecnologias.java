@@ -27,15 +27,15 @@ public class Tecnologias {
     @Column( name= "porcentaje")
     private int porcentaje;
     
-    @Column (name= "id_persona")
-    private Long id_persona;
+    @Column (name= "url_imagen_tec")
+    private String url_imagen_tec;
     
     public Tecnologias(){}
     
-    public Tecnologias( Long iTec, String nomTec, int porcen, Persona i_pers){
+    public Tecnologias( Long iTec, String nomTec, int porcen, String url_imagen){
         this.idTec= iTec;
         this.nombreTec= nomTec;
         this.porcentaje= porcen;
-        this.id_persona= i_pers.getId();
+        this.url_imagen_tec= url_imagen;
     }
 }
