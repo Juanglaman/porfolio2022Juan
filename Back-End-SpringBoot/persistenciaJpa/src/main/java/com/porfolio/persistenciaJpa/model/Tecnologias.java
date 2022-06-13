@@ -38,4 +38,11 @@ public class Tecnologias {
         this.porcentaje= porcen;
         this.url_imagen_tec= url_imagen;
     }
+    
+    public String getUrl_imagen_tec(){
+        return url_imagen_tec;
+    }
+    public void setUrl_imgen_tec(String url_imagen){
+        this.url_imagen_tec = url_imagen;
+    }
 }

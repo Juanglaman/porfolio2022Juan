@@ -41,7 +41,7 @@ public class controllerProyectos {
         return proyServ.verProyectos();
     }
     
-    @DeleteMapping ("/api/proyectos/delete/{id}")
+    @DeleteMapping ("/api/proyectos/delete/{id_pro}")
     public void borrarProyecto(@PathVariable Long id_pro){
         proyServ.borrarProyecto(id_pro);
     }

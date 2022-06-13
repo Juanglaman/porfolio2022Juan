@@ -48,4 +48,11 @@ public class Proyectos {
         this.url_imagen_pro= imag;
         this.link_pro= link;
     }
+    
+    public String getUrl_imagen_pro(){
+        return url_imagen_pro;
+    }
+    public void setUrl_imagen_pro(String imagen_pro){
+        this.url_imagen_pro = imagen_pro;
+    }
 }

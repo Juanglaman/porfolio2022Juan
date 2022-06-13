@@ -7,9 +7,7 @@
 img{
   width: 100%;
 }
-input {
-  width: 50%;
-}
+
 .boton{
   margin: 2% 0;
 }
@@ -19,4 +17,11 @@ input {
 }
 .parte2{
   float: right;
+}
+.parte1b{
+  float: left;
+}
+.parte2b{
+  float: right;
+  margin-top: 5%;
 }

@@ -1,14 +1,14 @@
 <div class="row">
   <h2>Hard & soft skills</h2>
-  <div class="col-lg-4"></div>
-  <div *ngIf="(uLoged==='1')" class="col-4 boton">
+
+  <div *ngIf="(uLoged==='1')" class="col-12 boton">
       <button type="button" class="btn btn-secondary"
                                         data-toggle="modal" data-target="#Modal1Tecno">
           Añadir nueva Tecnologia
         </button>
         <hr>
   </div>
-  <div class="col-lg-4"></div>
+
 
   <div *ngFor="let tecno of tecnoList" class="text-center col-sm-4 col-md-4 col-lg-4"  >
 
@@ -28,7 +28,9 @@
     >
 
     </circle-progress>
+
   </div>
+
   <a *ngIf="(uLoged==='1')"
                 (click)="deleteTecnologia(tecno.id_tec)"
                 class="btn btn-danger tooltips"

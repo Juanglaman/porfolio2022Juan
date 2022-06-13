@@ -14,7 +14,7 @@ public interface IExpLaboralService {
     //Editar una Experiencia
     public void editarExpLaboral(ExpLaboral expLabo);
     //Eliminar Experiencia
-    public void borrarExpLaboral(Long id);
+    public void borrarExpLaboral(Long id_exp);
     
     //Buscar Experiencia por id
     public ExpLaboral buscarExpLaboral(Long id);

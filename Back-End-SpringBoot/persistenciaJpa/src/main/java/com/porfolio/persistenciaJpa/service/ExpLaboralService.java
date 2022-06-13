@@ -34,8 +34,8 @@ public class ExpLaboralService implements IExpLaboralService{
     }
 
     @Override
-    public void borrarExpLaboral(Long id) {
-        expoRepo.deleteById(id);
+    public void borrarExpLaboral(Long id_exp) {
+        expoRepo.deleteById(id_exp);
     }
 
     @Override

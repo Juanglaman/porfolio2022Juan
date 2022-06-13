@@ -25,7 +25,7 @@ export class ExplaboralService {
   }
 
   public borrarExplaboral(id: number): Observable<void>{
-    return this.http.delete<void>(`${this.apiServerUrl}/api/explaboral/borrar/${id}`);
+    return this.http.delete<void>(`${this.apiServerUrl}/api/explaboral/delete/${id}`);
   }
 
 }

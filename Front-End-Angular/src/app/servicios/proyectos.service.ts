@@ -25,6 +25,6 @@ export class ProyectosService {
   }
 
   public deleteProyectos(id_pro: number): Observable<void>{
-    return this.http.delete<void>(`${this.apiServerUrl}/api/proyectos/borrar/${id_pro}`);
+    return this.http.delete<void>(`${this.apiServerUrl}/api/proyectos/delete/${id_pro}`);
   }
 }

@@ -7,6 +7,23 @@
 h3, h4 {
   display: inline;
 }
+.expLabo{
+  margin-top: 2%;
+}
+.parte1{
+  float: left;
+  margin-top: 2%;
+}
+.parte2{
+  float: right;
+}
+.parte1b{
+  float: left;
+}
+.parte2b{
+  float: right;
+  margin-top: 5%;
+}
 .boton{
   margin: 2% 0;
 }

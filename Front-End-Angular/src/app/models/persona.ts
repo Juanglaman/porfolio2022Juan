@@ -2,9 +2,7 @@ export interface Persona{
     id_per: number;
     nombre: String;
     apellido: String;
-    domicilio: String;
     fecha_nacimiento: String;
-    telefono: String;
     correo: String;
     sobre_mi: String;
     url_foto_perfil: String;

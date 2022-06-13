@@ -38,9 +38,9 @@ public class controllerExpLaboral {
         return new ResponseEntity<>(expLabo, HttpStatus.OK);
     }
     
-    @DeleteMapping ("/api/explaboral/borrar/{id}")
-    public void borrarExpLaboral(@PathVariable Long id){
-        expLaboServ.borrarExpLaboral(id);
+    @DeleteMapping ("/api/explaboral/delete/{id_exp}")
+    public void borrarExpLaboral(@PathVariable Long id_exp){
+        expLaboServ.borrarExpLaboral(id_exp);
     }
     
     @PostMapping ("/api/explaboral/crear")

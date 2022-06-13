@@ -4,14 +4,17 @@ import { Proyectos } from 'src/app/models/proyectos';
 import { ProyectosService } from 'src/app/servicios/proyectos.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/servicios/login.service';
+import { GuardarImagenService } from 'src/app/servicios/guardar-imagen.service';
 
 @Component({
   selector: 'app-proyectos',
   templateUrl: './proyectos.component.html',
   styleUrls: ['./proyectos.component.css']
 })
+
 export class ProyectosComponent implements OnInit {
 
+  public archivoCapturado : Array<File>= [];
   public proList: Proyectos[]=[];
   public  uLoged: string | undefined;
 
@@ -19,7 +22,8 @@ export class ProyectosComponent implements OnInit {
   signupFormProyectos: FormGroup;
   editarFormProyectos: FormGroup;
 
-  constructor( private proService: ProyectosService, private _builder: FormBuilder, private loginService: LoginService) {
+  constructor( private proService: ProyectosService, private _builder: FormBuilder,
+               private loginService: LoginService, private guardarImg: GuardarImagenService) {
     this.signupFormProyectos = this._builder.group({
       nombre_pro: ['', Validators.required],
       fecha_inicio_pro: ['', Validators.required],
@@ -62,6 +66,13 @@ export class ProyectosComponent implements OnInit {
   }
 
   public enviarProyecto(): void{
+    //Guardado de imagen
+    let formuData = new FormData();
+    for (let i = 0; i < this.archivoCapturado.length; i++) {
+      formuData.append("file", this.archivoCapturado[i], this.archivoCapturado[i].name)
+    }
+    this.guardarImg.addImagen(formuData);
+    this.signupFormProyectos.value.url_imagen_pro = this.archivoCapturado[0].name;
 
     this.proService.addProyectos(this.signupFormProyectos.value).subscribe({
       next: (Response: Proyectos) =>{
@@ -75,8 +86,26 @@ export class ProyectosComponent implements OnInit {
     })
   }
 
+  capturarFile(event: any){
+    console.log(event);
+    this.archivoCapturado = event.target.files;
+    console.log(this.archivoCapturado);
+  }
+
+
   public editarProyecto(id_pro: number): void{
-    this.editarFormProyectos.value.id_pro=id_pro;
+
+    //Guardado de imagen
+    let formuData = new FormData();
+    for (let i = 0; i < this.archivoCapturado.length; i++) {
+      formuData.append("file", this.archivoCapturado[i], this.archivoCapturado[i].name)
+    }
+    this.guardarImg.addImagen(formuData);
+
+    //Editar datos por id
+    this.editarFormProyectos.value.id_pro = id_pro;
+    this.editarFormProyectos.value.url_imagen_pro = this.archivoCapturado[0].name;
+    console.log(this.editarFormProyectos.value);
     this.proService.updateProyectos(this.editarFormProyectos.value).subscribe({
       next: (Response: Proyectos) =>{
         console.log(Response);

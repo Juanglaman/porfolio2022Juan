@@ -1,19 +1,22 @@
 <div class="row">
   <h2>Experiencia laboral</h2>
-  <div class="col-lg-1"></div>
-  <div class="col-lg-10">
+  <div *ngIf="(uLoged==='1')" class="col-4 boton">
+      <button
+              type="button"
+              class="btn btn-secondary"
+              data-toggle="modal"
+              data-target="#ModalExpLabo">
+                  Añadir nuevo Proyecto
+      </button>
+      <hr>
+  </div>
+  <div class="col-8 expLabo"></div>
 
-      <div *ngIf="(uLoged==='1')" class="boton">
-        <button type="button" class="btn btn-secondary"
-                                        data-toggle="modal" data-target="#ModalExpLabo">
-          Añadir nueva experiencia laboral
-        </button>
-        <hr>
-      </div>
     <ul *ngFor="let expList of expLaboList">
 
         <div *ngIf="(uLoged==='1')">
-          <form [formGroup]="laboForm" (ngSubmit)="editarExpLaboral(expList.id_exp)">
+          <div class="col-sm-12 col-md-6 col-lg-6 parte1b">
+          <form [formGroup]="laboForm" (ngSubmit)="editarExpLaboral(expList.id_exp)" enctype="multipart/form-data">
               <div class="form-group">
                   <input type="hidden" formControlName="id_exp">
 
@@ -36,6 +39,10 @@
                   <label for="puesto">Cargo puesto ejercido:</label>
                   <input type="text" formControlName="puesto" class="form-control"
                               id="puesto" placeholder="{{expList.puesto}}" required>
+
+                  <label for="url_logo_empresa">Imagen:</label>
+                  <input type="file" (change)="capturarFile($event)" formControlName="url_logo_empresa" class="form-control"
+                                         id="url_logo_empresa" required>
               </div>
               <div class="col text-center">
 
@@ -50,21 +57,26 @@
                 </a>
             </div>
           </form>
-          <hr>
-          <br>
-      </div>
+        </div>
+        <div class="col-sm-12 col-md-5 col-lg-5 parte2b">
+          <img src="http://localhost:3000/img/medium-resize-{{expList.url_logo_empresa}}" alt="Imagen proyecto {{expList.url_logo_empresa}} ">
+        </div>
 
-      <div *ngIf="(this.uLoged!=='1')" class="todos">
-          <li><h3>{{expList.nombre_empresa}}</h3> - <h4>Desde {{expList.fecha_inicio}} hasta {{expList.fecha_fin}}</h4></li>
-          <p>{{expList.descripcion}}</p>
-          <p>El cargo es: {{expList.puesto}}</p>
-          <hr>
-          <br>
+      </div>
+      <div *ngIf="(this.uLoged!=='1')" >
+          <div class="col-sm-12 col-md-6 col-lg-6 parte1">
+              <li><h3>{{expList.nombre_empresa}}</h3> - <h4>Desde {{expList.fecha_inicio}} hasta {{expList.fecha_fin}}</h4></li>
+              <p>{{expList.descripcion}}</p>
+              <p>El cargo es: {{expList.puesto}}</p>
+          </div>
+          <div class="col-sm-12 col-md-5 col-lg-5 parte2">
+              <img src="http://localhost:3000/img/medium-resize-{{expList.url_logo_empresa}}" alt="Imagen proyecto {{expList.url_logo_empresa}} ">
+          </div>
       </div>
 
     </ul>
   </div>
-  <div class="col-1"></div>
+
   <!--MODAL AÑADIR-->
   <div class="modal fade" id="ModalExpLabo" tabindex="-1" role="dialog"
               aria-labelledby="ModalExpLabo" aria-hidden="true">
@@ -100,6 +112,10 @@
                       <input type="text" formControlName="puesto" class="form-control"
                                   id="puesto" placeholder="Ingrese el puesto ejercido" required>
 
+                      <label for="url_logo_empresa">Imagen:</label>
+                      <input type="file" (change)="capturarFile($event)" formControlName="url_logo_empresa" class="form-control"
+                                                         id="url_logo_empresa" required>
+
                   <button [disabled]="modalForm.invalid">Ingresar nueva experiencia</button>
               </div>
             </form>
@@ -110,5 +126,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>

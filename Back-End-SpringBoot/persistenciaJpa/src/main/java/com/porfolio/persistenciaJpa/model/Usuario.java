@@ -24,5 +24,11 @@ public class Usuario {
     private String correo;
     @Column (name= "password")
     private String password;
+    public String getCorreo() {
+        return null;
+    }
+    public String getPassword() {
+        return null;
+    }
     
 }
